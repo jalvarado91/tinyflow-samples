@@ -32,7 +32,7 @@ jobs:
 
       - name: Build with nixpacks
         run: |
-          nixpacks build ./example_2/python-numget --name tinyflow-ex2-py-numgen
+          nixpacks build ./example_2/python-numgen --name tinyflow-ex2-py-numgen
           nixpacks build ./example_2/node-operation --name tinyflow-ex2-node-op
 
       - name: Save Docker image
