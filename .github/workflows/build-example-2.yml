@@ -1,4 +1,4 @@
-name: Example 1
+name: Example 2
 on:
   # push:
   #   branches:
@@ -32,23 +32,23 @@ jobs:
 
       - name: Build with nixpacks
         run: |
-          nixpacks build ./example_1/python-numpy --name tinyflow-ex1-python
-          nixpacks build ./example_1/node-main-file --name tinyflow-ex1-node
+          nixpacks build ./example_2/python-numget --name tinyflow-ex2-py-numgen
+          nixpacks build ./example_2/node-operation --name tinyflow-ex2-node-op
 
       - name: Save Docker image
         run: |
           mkdir /tmp/docker-images
-          docker save tinyflow-ex1-python:latest > /tmp/docker-images/tinyflow-ex1-python.tar
-          docker save tinyflow-ex1-node:latest > /tmp/docker-images/tinyflow-ex1-node.tar
+          docker save tinyflow-ex2-py-numgen:latest > /tmp/docker-images/tinyflow-ex2-py-numgen.tar
+          docker save tinyflow-ex2-node-op:latest > /tmp/docker-images/tinyflow-ex2-node-op.tar
 
       - name: Load Docker image
         run: |
-          docker load -i /tmp/docker-images/tinyflow-ex1-python.tar
-          docker tag tinyflow-ex1-python jalvarado91/tinyflow-samples-ex1-python:latest
-          docker load -i /tmp/docker-images/tinyflow-ex1-node.tar
-          docker tag tinyflow-ex1-node jalvarado91/tinyflow-samples-ex1-node:latest
+          docker load -i /tmp/docker-images/tinyflow-ex2-py-numgen.tar
+          docker tag tinyflow-ex2-py-numgen jalvarado91/tinyflow-ex2-py-numgen:latest
+          docker load -i /tmp/docker-images/tinyflow-ex2-node-op.tar
+          docker tag tinyflow-ex2-node-op jalvarado91/tinyflow-ex2-node-op:latest
 
       - name: Docker push
         run: |
-          docker push jalvarado91/tinyflow-samples-ex1-python:latest
-          docker push jalvarado91/tinyflow-samples-ex1-node:latest
+          docker push jalvarado91/tinyflow-ex2-py-numgen:latest
+          docker push jalvarado91/tinyflow-ex2-node-op:latest
