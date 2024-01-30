@@ -1,10 +1,12 @@
-import { createClient } from 'redis';
+const redis = require("redis")
+// import { createClient } from 'redis';
+const createClient = redis.createClient;
 
 const redisUrl = process.env.REDIS_CONNECTION_URL ?? "noconnectionurlread"
 const runId = process.env.RUN_ID ?? ""
 const operation = process.env.OPERATION ?? "SUM"
-const input_a_k = process.env.INPUT_A ?? 0
-const input_b_k = process.env.INPUT_B ?? 0
+const input_a_k = process.env.INPUT_A ?? "0"
+const input_b_k = process.env.INPUT_B ?? "0"
 const result_loc = process.env.RES_LOC ?? "RES"
 
 const client = await createClient({
